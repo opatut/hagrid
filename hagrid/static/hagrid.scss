@@ -860,3 +860,12 @@ td .count-config-field {
     content: '=';
   }
 }
+
+dl.faq {
+  dt {
+    font-size: 1.5rem;
+    font-family: $fontH1;
+    font-weight: 500;
+    color: $primary;
+  }
+}

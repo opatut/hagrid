@@ -1,5 +1,6 @@
 import random
 
+from django.http import Http404
 from django.shortcuts import render
 from django.template.loader import render_to_string
 from django.views.decorators.cache import cache_page
@@ -114,3 +115,17 @@ def dashboard_table(request):
     }
 
     return render(request, "dashboard_table.html", context)
+
+@cache_page(10)
+@require_GET
+def dashboard_faq(request):
+    faq_html: str | None = StoreSettings.objects.first().faq_html
+
+    if not faq_html:
+        raise Http404()
+
+    context = {
+        "faq_html": faq_html
+    }
+
+    return render(request, "faq.html", context)

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    {% if faq_html %}
+    <h1 class="title">FAQ</h1>
+    {{ faq_html|safe }}
+    {% endif %}
+
+{% endblock %}
